@@ -10,9 +10,12 @@ module Administrate
         Administrate::Engine.add_javascript "administrate-field-json/application"
         Administrate::Engine.add_stylesheet "administrate-field-json/application"
 
+        Administrate::Engine.config.assets.precompile += %w( jsoneditor-icons.svg )
+
         engine_root = self.root
 
         isolate_namespace Administrate
+
         config.to_prepare do
           Rails.application.config.assets.paths << engine_root.join("vendor", "assets", "images")
         end
